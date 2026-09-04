@@ -1,0 +1,6 @@
+{
+  "name": "Weichie Parallax Showcase",
+  "description": "Pixel-perfect reproduction of the Weichie.com smooth parallax scrolling effect with one-click playable downloads.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

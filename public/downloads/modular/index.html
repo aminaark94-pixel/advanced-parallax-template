@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weichie Parallax Effect — One-Click Standalone</title>
+  
+  <!-- Typography (Google Fonts: Syne & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Custom Cursor Follower -->
+  <div class="cursor" id="cursor">
+    <span class="cursor-text" id="cursor-text">EXPLORE</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <span class="logo-bold">WEICHIE</span>
+        <span class="logo-sub">STUDIO</span>
+      </a>
+      <div class="header-badge">
+        <span class="pulse-dot"></span>
+        <span>BRUSSELS & NEW YORK</span>
+      </div>
+      <nav class="nav">
+        <a href="#work" class="nav-link">SELECTED WORK</a>
+        <a href="#about" class="nav-link">APPROACH</a>
+        <a href="#contact" class="nav-btn">GET IN TOUCH</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with Floating Parallax Elements -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-tag">DIGITAL ARCHITECTURE & IMMERSIVE DESIGN</div>
+        <h1 class="hero-title">
+          CRAFTING DIGITAL <br>
+          <span class="outline-text">SPACES</span> THAT MOVE
+        </h1>
+        <p class="hero-desc">
+          Experience liquid, inertial scrolling synchronized with dual-speed cover parallax windows. As seen on Weichie.com.
+        </p>
+        <div class="hero-scroll-indicator">
+          <div class="scroll-track">
+            <div class="scroll-thumb"></div>
+          </div>
+          <span>SCROLL TO EXPLORE PARALLAX</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Work: Signature Weichie Dual-Speed Asymmetrical Parallax Grid -->
+    <section class="work-section" id="work">
+      <div class="section-header">
+        <div>
+          <span class="section-badge">PORTFOLIO</span>
+          <h2 class="section-title">Selected Works</h2>
+        </div>
+        <p class="section-subtitle">
+          Notice how the left and right columns glide at alternating velocities (-12% vs -18%), while internal media masks expand and scrub dynamically.
+        </p>
+      </div>
+
+      <div class="work-grid">
+        <!-- Column 1 (Left - Moving at Velocity A) -->
+        <div class="work-column" id="col-left">
+          <!-- Card 1 -->
+          <article class="card" data-cursor-card="VIEW CASE">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-12" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Adaptive Green Architecture" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -12%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">WEB DEVELOPMENT & 3D</span>
+              <h3 class="card-title">Adaptive Green</h3>
+              <p class="card-desc">Leaders in Carbon Negative Green Infrastructure & Climate Positive Architectural Systems.</p>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" data-cursor-card="EXPLORE">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-14" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=85" alt="Modular Pavilions" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -14%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">SPATIAL ENGINEERING</span>
+              <h3 class="card-title">Viewbox Modular</h3>
+              <p class="card-desc">Modular structural solutions blending industrial efficiency with tailored museum-grade aesthetics.</p>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" data-cursor-card="INSPECT">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-12" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85" alt="Geometric Glass Facade" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -12%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">ECOMMERCE PLATFORM</span>
+              <h3 class="card-title">Nordic Pavilion</h3>
+              <p class="card-desc">High-speed e-commerce infrastructure engineered for international contemporary furnishings.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Column 2 (Right - Moving at Velocity B with Offset) -->
+        <div class="work-column col-offset" id="col-right">
+          <!-- Card 4 -->
+          <article class="card" data-cursor-card="VIEW CASE">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-18" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85" alt="Minimalist Concrete House" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -18%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">INTERACTIVE BRANDING</span>
+              <h3 class="card-title">Spantech Structures</h3>
+              <p class="card-desc">Rapid deployable temporary architectural venues built for global festivals and diplomatic summits.</p>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card" data-cursor-card="DISCOVER">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-16" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85" alt="Modern Sustainable Residence" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -16%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">DIGITAL CAMPAIGN</span>
+              <h3 class="card-title">Mechelen Feest</h3>
+              <p class="card-desc">City-wide summer festival platform coordinating performances, interactive maps, and live visitor flows.</p>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card" data-cursor-card="VIEW CASE">
+            <div class="card-media" data-promote>
+              <div class="card-media-inner" data-parallax="-18" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85" alt="Architectural Studio Interior" class="card-image" loading="lazy">
+              </div>
+              <div class="card-speed-badge">Speed: -18%</div>
+            </div>
+            <div class="card-body">
+              <span class="card-tag">EXPERIENCE DESIGN</span>
+              <h3 class="card-title">Horizon Atelier</h3>
+              <p class="card-desc">Virtual gallery spaces and interactive architectural walkthroughs rendered in real-time WebGL.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Split-Scroll Parallax Section -->
+    <section class="sticky-section" id="about">
+      <div class="sticky-container">
+        <!-- Sticky Pin Column -->
+        <div class="sticky-pin">
+          <span class="section-badge">METHODOLOGY</span>
+          <h2 class="sticky-title">How the Weichie Parallax System Works</h2>
+          <p class="sticky-desc">
+            Unlike cheap CSS translateY jitter, Weichie unifies three distinct mathematical layers:
+          </p>
+          <ul class="sticky-points">
+            <li class="point-item active">
+              <span class="point-num">01</span>
+              <div>
+                <strong>Inertial Lerp Smoothing</strong>
+                <p>Smooths mousewheel inputs using virtual damping so frames never stutter.</p>
+              </div>
+            </li>
+            <li class="point-item">
+              <span class="point-num">02</span>
+              <div>
+                <strong>Optical Cover Mode</strong>
+                <p>Inner media is pre-scaled by [1 + abs(speed) * 0.024], preventing blank borders.</p>
+              </div>
+            </li>
+            <li class="point-item">
+              <span class="point-num">03</span>
+              <div>
+                <strong>Asymmetrical Offset Speeds</strong>
+                <p>Columns scroll at divergent rates to create realistic optical parallax depth.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Scrolling Content Column -->
+        <div class="sticky-scroll">
+          <div class="feature-box">
+            <div class="feature-media" data-promote>
+              <div class="feature-media-inner" data-parallax="-15" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=1200&q=85" alt="Engineering precision" class="feature-image">
+              </div>
+            </div>
+            <h4>Smooth Precision</h4>
+            <p>Every pixel calculation uses requestAnimationFrame and GSAP's optimized ticker.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-media" data-promote>
+              <div class="feature-media-inner" data-parallax="-20" data-parallax-mode="cover">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt="Design workspace" class="feature-image">
+              </div>
+            </div>
+            <h4>Hardware Accelerated</h4>
+            <p>Runs strictly via transform3d (GPU composite layers) for consistent 60+ FPS performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Parallax Centerpiece Showcase -->
+    <section class="centerpiece-section">
+      <div class="centerpiece-wrapper">
+        <div class="centerpiece-media">
+          <div class="centerpiece-inner" data-parallax="-22" data-parallax-mode="cover">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=85" alt="Monumental Architecture Centerpiece" class="centerpiece-image">
+          </div>
+        </div>
+        <div class="centerpiece-overlay">
+          <span class="centerpiece-tag">DEEP PARALLAX INTENSITY (-22%)</span>
+          <h2 class="centerpiece-heading">Immersion Through Geometry</h2>
+          <p class="centerpiece-text">Notice how the landscape deepens as you scroll through this focal monument.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div>
+            <h3 class="footer-title">Let's build something unforgettable.</h3>
+            <p class="footer-sub">Independent digital studio crafting bespoke web experiences.</p>
+          </div>
+          <a href="mailto:hello@weichie.com" class="footer-cta">hello@weichie.com</a>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Weichie Parallax Showcase. Standalone standalone edition.</p>
+          <div class="footer-links">
+            <a href="#">Brussels</a>
+            <a href="#">New York</a>
+            <a href="#">Back to Top ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- External GSAP & Lenis Libraries (Loaded via reliable official CDNs) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  
+  <!-- Standalone Parallax Script -->
+  <script src="script.js"></script>
+</body>
+</html>
