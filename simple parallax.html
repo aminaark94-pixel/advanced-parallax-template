@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LPRO. — We Capture Every Moment Beautifully</title>
+<style>
+  :root{
+    --cream:#f4f1ec;
+    --ink:#1c1a17;
+    --ink-soft:#57534d;
+    --rust:#c1502e;
+    --line:#dcd7cd;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  /* ---------- HEADER ---------- */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px clamp(24px,5vw,64px) 0;
+    margin-bottom:20px; /* Added 20px space below header */
+  }
+
+  .logo{
+    font-size:14px;
+    letter-spacing:.14em;
+    font-weight:600;
+  }
+
+  nav{
+    display:flex;
+    gap:36px;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-left:auto; /* Centers nav between logo and menu button */
+    margin-right:auto;
+  }
+  nav a{ transition:color .2s ease; }
+  nav a:hover{ color:var(--ink); }
+
+  .menu-btn{
+    width:34px;
+    height:34px;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+  }
+  .menu-btn span{
+    width:12px;
+    height:12px;
+    background:var(--cream);
+  }
+
+  @media(max-width:820px){
+    nav{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap:20px;
+    align-items:center;
+    padding:12px clamp(24px,5vw,64px) 20px;
+    max-width:1500px;
+    margin:0 auto;
+  }
+
+  @media(max-width:900px){
+    .hero{ grid-template-columns:1fr; }
+  }
+
+  .copy h1{
+    font-size:clamp(34px,4.6vw,54px);
+    line-height:1.08;
+    font-weight:500;
+    margin:0 0 22px;
+    letter-spacing:-.01em;
+  }
+  .copy h1 span{
+    display:block;
+    text-decoration:underline;
+    text-underline-offset:8px;
+    text-decoration-thickness:1.5px;
+  }
+
+  .copy p{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:280px;
+    margin:0 0 30px;
+  }
+
+  .cta{
+    display:inline-block;
+    background:var(--rust);
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    padding:14px 26px;
+    letter-spacing:.02em;
+    cursor:pointer;
+    border:none;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .cta:hover{
+    background:#a8451f;
+    transform:translateY(-2px);
+  }
+
+  /* ---------- COLLAGE ---------- */
+  .collage-wrap{
+    position:relative;
+    width:100%;
+    max-width:760px;
+    height:min(37vw,380px);
+    margin-left:auto;
+    justify-self:end;
+    touch-action:pan-y;
+  }
+  @media(max-width:900px){
+    .collage-wrap{ margin:0 auto; height:78vw; max-height:360px; }
+  }
+
+  .collage-track{
+    position:absolute;
+    inset:0;
+    cursor:grab;
+    user-select:none;
+  }
+  .collage-track.dragging{ cursor:grabbing; }
+
+  .ph{
+    position:absolute;
+    overflow:hidden;
+    background:#ccc;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,.35);
+    will-change:transform;
+  }
+  .ph img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    pointer-events:none;
+    -webkit-user-drag:none;
+  }
+
+  .ph-1{ left:7%;  top:8%; width:34%; height:31%; }
+  .ph-1 img{ filter:grayscale(1) contrast(1.05); }
+
+  .ph-2{ left:30%; top:3%;  width:33%; height:68%; }
+
+  .ph-3{ left:-1%;  top:38%; width:33%; height:60%; }
+
+  .ph-4{ left:36%; top:66%; width:33%; height:29%; }
+  .ph-4 img{ filter:grayscale(1) contrast(1.05); }
+
+  .accent-block{
+    position:absolute;
+    left:62%;
+    top:54%;
+    width:4%;
+    height:20%;
+    background:var(--rust);
+    z-index:0;
+  }
+
+  .plus{
+    position:absolute;
+    font-size:22px;
+    line-height:1;
+    color:var(--ink);
+    font-weight:300;
+    pointer-events:none;
+  }
+  .plus-1{ left:27%; top:9%; }
+  .plus-2{ left:68%; top:64%; }
+
+  .square-mark{
+    position:absolute;
+    right:0;
+    top:6%;
+    width:22px;
+    height:22px;
+    background:var(--ink);
+    pointer-events:none;
+  }
+
+  .arrow-down{
+    position:absolute;
+    left:33%;
+    top:82%;
+    width:16px;
+    height:44px;
+    pointer-events:none;
+  }
+  .arrow-down svg{ width:100%; height:100%; }
+
+  .drag-hint{
+    position:absolute;
+    left:50%;
+    bottom:-30px;
+    transform:translateX(-50%);
+    font-size:10px;
+    letter-spacing:.12em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    opacity:.7;
+    pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LPRO.</div>
+  <nav>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="menu-btn"><span></span></div>
+</header>
+
+<section class="hero">
+  <div class="copy">
+    <h1>We Capture<br><span>Every Moment</span><br>Beautifully</h1>
+    <p>Serving photo shoots for various events, both for private, state, and commercial events.</p>
+    <button class="cta">Book Schedule</button>
+  </div>
+
+  <div class="collage-wrap">
+    <div class="collage-track" id="collageTrack">
+      <div class="accent-block"></div>
+
+      <div class="ph ph-1" data-speed="0.5">
+        <img src="https://picsum.photos/seed/lpro-bouquet/500/500" alt="">
+      </div>
+      <div class="ph ph-2" data-speed="1">
+        <img src="https://picsum.photos/seed/lpro-portrait/600/900" alt="">
+      </div>
+      <div class="ph ph-3" data-speed="0.8">
+        <img src="https://picsum.photos/seed/lpro-fabric/500/700" alt="">
+      </div>
+      <div class="ph ph-4" data-speed="1.25">
+        <img src="https://picsum.photos/seed/lpro-tulle/600/400" alt="">
+      </div>
+
+      <div class="plus plus-1">+</div>
+      <div class="plus plus-2">+</div>
+      <div class="square-mark"></div>
+
+      <div class="arrow-down">
+        <svg viewBox="0 0 16 60" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="0" x2="8" y2="48" stroke="#1c1a17" stroke-width="1.5"/>
+          <path d="M2 44 L8 52 L14 44" fill="none" stroke="#1c1a17" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="drag-hint">Drag to move</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const track = document.getElementById('collageTrack');
+  const images = Array.from(track.querySelectorAll('.ph'));
+
+  const state = images.map((img, i) => ({
+    rawX: 0, 
+    rawY: 0, 
+    vx: 0, 
+    vy: 0,
+    ampX: 12 + (i % 3) * 5,
+    ampY: 10 + ((i + 1) % 3) * 5,
+    freqX: 0.0008 + i * 0.0001,
+    freqY: 0.0006 + i * 0.0001,
+    phase: i * 1.5
+  }));
+
+  let dragging = false;
+  let lastX = 0, lastY = 0, lastT = 0;
+
+  const FRICTION = 0.92;
+  const STOP_THRESHOLD = 0.01;
+  const BOUND = 140;
+  const SOFT_FACTOR = 0.25;
+
+  function elastic(raw, bound){
+    const abs = Math.abs(raw);
+    if (abs <= bound) return raw;
+    const over = abs - bound;
+    const softened = bound + over * SOFT_FACTOR;
+    return raw < 0 ? -softened : softened;
+  }
+
+  function applyTransform(i, t){
+    const s = state[i];
+    const speed = parseFloat(images[i].dataset.speed) || 1;
+    const bound = BOUND * speed;
+    const dragX = elastic(s.rawX, bound);
+    const dragY = elastic(s.rawY, bound);
+
+    const idleX = Math.sin(t * s.freqX + s.phase) * s.ampX;
+    const idleY = Math.cos(t * s.freqY + s.phase) * s.ampY;
+
+    images[i].style.transform = `translate(${dragX + idleX}px, ${dragY + idleY}px)`;
+  }
+
+  function pointerPos(e){
+    if(e.touches && e.touches.length){
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function onDown(e){
+    dragging = true;
+    track.classList.add('dragging');
+    const p = pointerPos(e);
+    lastX = p.x; 
+    lastY = p.y; 
+    lastT = performance.now();
+  }
+
+  function onMove(e){
+    if(!dragging) return;
+    const p = pointerPos(e);
+    const now = performance.now();
+    const dt = Math.max(now - lastT, 1);
+
+    const dx = p.x - lastX;
+    const dy = p.y - lastY;
+
+    images.forEach((img, i) => {
+      const speed = parseFloat(img.dataset.speed) || 1;
+      const s = state[i];
+
+      s.rawX += dx * speed;
+      s.rawY += dy * speed;
+
+      s.vx = (dx * speed) / dt;
+      s.vy = (dy * speed) / dt;
+    });
+
+    lastX = p.x; 
+    lastY = p.y; 
+    lastT = now;
+    if (e.cancelable) e.preventDefault();
+  }
+
+  function onUp(){
+    if(!dragging) return;
+    dragging = false;
+    track.classList.remove('dragging');
+  }
+
+  function tick(t){
+    images.forEach((img, i) => {
+      const s = state[i];
+
+      if (!dragging){
+        s.rawX += s.vx * 16;
+        s.rawY += s.vy * 16;
+        s.vx *= FRICTION;
+        s.vy *= FRICTION;
+
+        if (Math.abs(s.vx) < STOP_THRESHOLD && Math.abs(s.vy) < STOP_THRESHOLD){
+          s.rawX += (0 - s.rawX) * 0.05;
+          s.rawY += (0 - s.rawY) * 0.05;
+          s.vx = 0; 
+          s.vy = 0;
+        }
+      }
+
+      applyTransform(i, t);
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  track.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+
+  track.addEventListener('touchstart', onDown, { passive: true });
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('touchend', onUp);
+
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
